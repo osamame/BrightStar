@@ -1,0 +1,45 @@
+﻿@model EventManagementSystem.Core.Entities.Registration
+
+@{
+    ViewData["Title"] = "Cancel Registration";
+}
+
+<h1>Cancel Registration</h1>
+
+<h3>Are you sure you want to cancel your registration for this event?</h3>
+<div>
+    <h4>Registration Details</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.DateAndTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.DateAndTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Event.Location)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Event.Location)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RegistrationDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RegistrationDate)
+        </dd>
+    </dl>
+
+    <form asp-action="Cancel">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Confirm Cancellation" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Back to My Registrations</a>
+    </form>
+</div>

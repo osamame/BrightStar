@@ -1,0 +1,40 @@
+﻿@model EventManagementSystem.Web.ViewModels.RegistrationViewModel
+
+@{
+    ViewData["Title"] = "Register for Event";
+}
+
+<h1>Register for Event</h1>
+
+<h4>@Model.EventName</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register" asp-controller="Registrations" method="post">
+            @Html.AntiForgeryToken()
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EventId" />
+            <div class="form-group">
+                <label asp-for="EventName" class="control-label"></label>
+                <input asp-for="EventName" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="EventDate" class="control-label"></label>
+                <input asp-for="EventDate" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Confirm Registration" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-controller="Events" asp-action="Index">Back to Events</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
